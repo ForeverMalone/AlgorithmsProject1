@@ -6,7 +6,7 @@ public interface AutoComplete{
     public double weightOf(String term);
 
     // Returns the highest weighted matching term, or null if no matching term.
-    public String bestMatch(String prefix);
+    public String bestMatch(String prefix) throws Exception;
 
     // Returns the highest weighted k matching terms (in descending order of weight), as an
     // iterable.

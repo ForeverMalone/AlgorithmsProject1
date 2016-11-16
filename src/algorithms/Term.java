@@ -14,11 +14,12 @@ public class Term {
 	}
 
 	public Term(String name, long weight) {
-		super();
 		this.name = name;
 		this.weight = weight;
 	}
     
-    
+    public String toString(){
+    	return weight+"	"+name;
+    }
 
 }

@@ -4,6 +4,8 @@ import java.util.Scanner;
 
 public class Driver {
 	
+	BruteAutoComplete brute;
+	WordList word;
 	private Scanner input;
 	
 	private int mainMenu() {
@@ -16,16 +18,25 @@ public class Driver {
         return option;
     }
 	
-	public static void main(String[] args) {
+	private int bruteMenu() {
+        System.out.println("  1) Best Match");
+        System.out.println("  2) Multiple Matches");
+        System.out.println("------------------------");
+        System.out.println("  0) Exit");
+        System.out.print("==>> ");
+        int option = input.nextInt();
+        return option;
+    }
+	public static void main(String[] args) throws Exception {
         new Driver();
     }
 	
-	public Driver(){
+	public Driver() throws Exception{
         input = new Scanner(System.in);
         start();
     }
 	
-	private void start(){
+	private void start() throws Exception{
         int option = mainMenu();
         while (option != 0)
         {
@@ -33,7 +44,7 @@ public class Driver {
        
         // Case 1: Brute Force Complete
         case 1:
-            brute();
+            bruteStart();
             break;
            
         // Case 2: Quick Auto Complete
@@ -51,14 +62,42 @@ public class Driver {
         System.out.println("Goodbye!");
     }
 	
-	private void quick() {
-		// TODO Auto-generated method stub
-		
+	private void bruteStart() throws Exception{
+        int option = bruteMenu();
+        brute = new BruteAutoComplete();
+        while (option != 0)
+        {
+        switch (option) {
+       
+        // Case 1: Brute Force Complete
+        case 1:
+            runBestMatch();
+            break;
+           
+        // Case 2: Quick Auto Complete
+        case 2:
+            
+            break;
+
+        default:
+            System.out.println("Invalid option selected.");
+            break;
+        }
+        System.out.println("");
+        option = mainMenu();
+        }
+        System.out.println("Goodbye!");
+    }
+	
+	private void runBestMatch() throws Exception {
+		System.out.println("Enter prefix ===>");
+		String prefix = input.nextLine();
+		prefix = input.nextLine();
+		brute.bestMatch(prefix);
 	}
 
-
-	private void brute() {
-		// TODO Auto-generated method stub
+	private void quick() {
+		
 		
 	}
 
